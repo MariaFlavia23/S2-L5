@@ -1,0 +1,140 @@
+#include <stdio.h>        //In questa versione del codice ho risolto gli errori che ho individuato e ho implementato il codice per quattro casi non previsti. 
+#include <string.h>       //1)L'eventualità in cui l'utente inserisca lettere minuscole corrispondenti alle opzioni A,B e C previste
+                          //2)L'eventualità in cui l'utente inserisca una lettera che sia diversa dalle opzioni previste.
+                          //3)L'eventualità in cui l'utente inserisca un denominatore che sia 0.
+                          //4)l'eventualità in cui l'utente inserisca una stringa con più caratteri della dimensione dell'array.
+
+
+void menu ();
+void moltiplica ();
+void dividi ();
+void ins_string();       
+
+int main () 
+
+{    
+	char scelta;                                                         //Ho impostato correttamente la dichiarazione della variabile scelta di tipo carattere
+     do{	
+        menu ();
+	scanf ( "%c", &scelta);                                              //Ho inserito il corretto formato '%c' dal momento che la variabile scelta è di tipo char
+
+	switch (scelta)                                                      */Per gestire il caso in cui l'utente inserisca una lettera minuscola delle tre opzioni 
+                                                                               previste, ho previsto i case in modo da da prevedere anche le minuscole.*\ 
+                                                                             //Come si può vedere ora il codice ha case 'a', case 'b' e case 'c'.
+	{
+		case 'A':
+		moltiplica();
+		break;
+                case 'a':
+		moltiplica();
+		break;
+		case 'B':
+                dividi();
+                break;
+                case 'b':
+                dividi();
+                break;
+		case 'C':
+                ins_string();
+                break; 
+                case 'c':
+                ins_string();
+                break; 
+        
+	default:                                                             */Ho inserito il default in modo da gestire l'eventualità in cui l'utente inserisca 
+                                                                               un opzione che non è prevista dal programma. 
+                                                                             */Ho introdotto un while per far si che il programma ritorni al menu quando utente
+                                                                               inserisce opzioni sbagliate.*\
+                printf("Mi dispiace, non esiste l'opzione selezionata\n");
+                break;
+}  
+        } while ("scelta != 'A' && "scelta != 'a' && scelta != 'B' && scelta != 'b' && scelta!= 'C' && scelta != 'c'\n");  
+
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n");
+
+}
+
+
+void moltiplica ()
+{
+	short int  a = 0,b = 0;                                             //Ho dichiarato e inizializzato anche la variabile a
+	printf ("Inserisci i due numeri da moltiplicare:\n");               //Ho inserito il new line per rendere più leggibile la stampa a schermo
+	scanf ("%hd", &a);                                                  */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'hd' che sta per short int, 
+                                                                              il tipo della variabile 'a'.*\
+	scanf ("%hd", &b);                                                  */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'hd' che sta per short int, 
+                                                                              il tipo della variabile 'a'.*\
+
+	short int prodotto = a * b;
+
+	printf ("Il prodotto tra %hd e %hd e': %hd", a,b,prodotto);         */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'hd' che sta per short int, 
+                                                                              il tipo della variabile 'a'.*\
+
+}
+
+
+void dividi ()     
+{
+        float  a = 0,b = 0;                                                 */Ho modificato il tipo delle variabili 'a' e 'b' in float,
+                                                                              in modo da considerare i numeri con virgola come quoziente della divisione.*\
+                                                                            //Ho poi dichiarato e inizializzato anche la variabile 'a'
+        printf ("Inserisci il numeratore\n:");                              //Ho inserito il new line.
+        scanf ("%f", &a);                                                   */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'f' che sta per float, 
+                                                                              il tipo della variabile 'a'.*\ 
+	printf ("Inserisci il denominatore\n:");                            //Ho corretto l'errore di sintassi denumeratore e ho aggiunto il new line. *\ 
+        scanf ("%f", &b);                                                   */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'f' che sta per float, 
+                                                                              il tipo della variabile 'b'.*\
+        if ('b'!= 0){                                                       */Ho introdotto un if else in modo da dire al compilatore che se il denominatore è diverso
+                                                                              da 0, allora si procede alla divisione e stampa a schermo del risultato, altrimenti il
+                                                                              programma stampa un messaggio di errore.
+          int divisione = a / b;                                              */Ho sostituito l'operatore errato '%', in modo da ottenere il risultato della divisione
+                                                                              invece del resto.*\      
+
+          printf ("La divisione tra %f e %f e': %f.1", a,b,divisione\n);    */Ho inserito la lettera corretta dopo il puntatore %, ovvero 'f' che sta per float, 
+                                                                              il tipo della variabile 'b'.*\
+                                                                            */Ho implementato la risposta della funzione divisione() prevedendo, nell'ultimo printf,
+                                                                              che il risultato non può avere più di un numero dopo la virgola.
+
+        }else                                                                   
+              printf("Divisione per zero, errore\n"):                           
+
+}
+
+
+void ins_string () 
+{       
+        int lunghezza;
+	char stringa[10];
+        printf ("Inserisci la stringa:\n");                                 //Ho inserito il new line.
+                                                                            /Ho corretto l'errore logico rimuovendo la & perchè la variabile stringa è già un array. 
+                                                                           */Ho poi evitato l'overflow, cioè ho gestito l'ipotesi in cui l'utente inserisca un numero 
+                                                                            di caratteri superiore ai 9 a disposizione in base all'inzializzazione della variabile.
+
+    do {                           
+       scanf ("%s", stringa);
+       lunghezza = (strlen (stringa);
+        
+        if (lunghezza < 10){
+        printf("La stringa inserita è: %s", stringa\n");
+        }
+        else      
+        
+         printf("Spiacente, hai inserito troppi caratteri, riprova:\n");
+         lunghezza=10;
+        
+        
+      }
+       while ("lunghezza > 9");
+    
+        return;
+    
+
+}

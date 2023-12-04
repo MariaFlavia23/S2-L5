@@ -1,0 +1,95 @@
+void menu ();        //il programma è un assistente digitale che tramite un menù consente tre opzioni all'utente
+void moltiplica (); //opzione moltiplicazione, rappresentato dalla funzione modifica ()
+void dividi ();     //opzione divisione, rappresentata dalla funzione dividi ()
+void ins_string();  //opzione inserisci stringa, rappresentato dalla funzione ins_stringa()
+
+
+int main ()  */il programma prende avvio dalla funzione principale main () che è di tipo intero. 
+               All'interno del blocco istruzioni non si fa altro che costruire la possibilità per l'utente di scegliere, inserendo la lettera corrispondente al menù. 
+               Dopo la scelta, il programma eseguirà la funzione associata a quell'opzione.\n
+{
+	char scelta = {'\0'}; //La dichiarazione della variabile scelta, che è di tipo carattere. La variabile scelta sarà usata per memorizzare scelta dell'utente\n 
+                              
+                                
+	menu ();              */La chiamata alla funzione menu() serve a stampare a schermo il benvenuto all'utente e il menu delle opzioni\n.
+                                fra le quali l'utente può scegliere.*\
+	
+        scanf ("%d", &scelta); */la funzione scanf serve per associare l'input (valore) immesso dall'utente tramite tastiera alla variabile scelta.
+                                 In pratica si dice al programma di aspettarsi un valore di un certo tipo (in questo caso errato) e assegnarlo alla variabile scelta.*\
+                                                     
+
+	switch (scelta)         */Lo switch serve a valutare il valore della variabile 'scelta'. 
+                                  A seconda del valore che sceglierà l'utente per la variabile, il programma eseguirà uno dei casi specificati nel blocco istruzioni.*\
+	{
+		case 'A':                        */Se il valore assegnato alla variabile scelta (dato dall'utente) corrisponderà ad A, 
+                                                  allora il programma richiama la funzione moltiplicazione(), che moltiplica due numeri.*/
+		moltiplica();
+		break;
+		case 'B':                        */Se il valore assegnato alla variabile scelta (dato dall'utente) corrisponderà a B, 
+                                                  allora il programma richiama la funzione divisione(), che divide due numeri.*/
+                dividi();
+                break;
+		case 'C':                        */Se il valore assegnato alla variabile scelta (dato dall'utente) corrisponderà a C, 
+                                                 allora il programma richiama la funzione ins_string(), che si occupa di leggere una stringa inserita dall'utente.*/
+                ins_string();
+                break;
+	}
+
+return 0;                                        //Return 0 per impedire che la funzione main() continui all'infinito.
+
+}
+
+
+void menu ()                      */La funzione void menu serve a stampare a schermo il benvenuto all'utente,
+                                    dandogli il menu delle opzioni, con la possibilità di scelta inserendo la lettera corrispondente a ciascuna opzione.*\
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n"); 
+
+}
+
+
+void moltiplica ()                 //La funzione moltiplica() moltiplica due numeri interi rappresentati dalle variabili a e b
+{
+	short int  a,b = 0;                                    */Nel blocco istruzioni di questa funzione, vediamo che dopo la dichiarazione e inizializzazione delle
+                                                                 variabili, il print stampa a schermo la richiesta all'utente di inserire i due numeri e 
+                                                                 lo scanf legge il valore inserito in input dall'utente e associa quel valore alle variabili 'a' e 'b'. 
+                                                                 Poi si dice al compilatore di calcolare il prodotto dei numeri inseriti dall'utente.
+	printf ("Inserisci i due numeri da moltiplicare:");      infine il printf stampa a schermo il prodotto della moltiplicazione.*\
+	scanf ("%f", &a);                                    
+	scanf ("%d", &b);                                    
+
+	short int prodotto = a * b;                               
+
+	printf ("Il prodotto tra %d e %d e': %d", a,b,prodotto); 
+}                                                               
+
+
+void dividi ()                    //La funzione dividi() divide due numeri interi rappresentati dalle variabili a e b
+{
+        int  a,b = 0;                                          */Nel blocco istruzioni di questa funzione, vediamo che dopo la dichiarazione e inizializzazione delle
+                                                                 variabili, il print stampa a schermo la richiesta all'utente di inserire i due numeri da dividere e 
+                                                                 lo scanf legge il valore inserito in input dall'utente e associa quel valore alle variabili 'a' e 'b'. 
+                                                                 Poi si dice al compilatore di effettuare la divisione dei numeri inseriti dall'utente.
+        printf ("Inserisci il numeratore:");                     infine il printf stampa a schermo il risultato della divisione.\*
+        scanf ("%d", &a);
+	printf ("Inserisci il denumeratore:");
+        scanf ("%d", &b);
+
+        int divisione = a % b;                                   
+
+        printf ("La divisione tra %d e %d e': %d", a,b,divisione);  
+}
+
+
+
+
+
+void ins_string ()              //La funzione inserisci stringa() da la possibilità all'utente di inserire una stringa di caratteri
+{
+	char stringa[10];                                 */Nel blocco istruzioni di questa funzione, vediamo viene dichiarata e inizializzata la variabile scelta che 
+                                                            composta da 10 caratteri. Si da la possibilità all'utente quindi di inserire una stringa di caratteri, 
+                                                            attraverso la stampa a schermo, che viene poi letta da scanf in modo da associarla alla variabile stringa
+        printf ("Inserisci la stringa:");
+        scanf ("%s", &stringa);                           

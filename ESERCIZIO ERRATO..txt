@@ -1,0 +1,85 @@
+#include <stdio.h>
+             
+void menu ();        
+void moltiplica (); 
+void dividi ();     
+void ins_string();  
+
+int main ()  
+{
+	char scelta = {'\0'}; */La dichiarazione della variabile scelta, che è di tipo carattere, 
+                                non ha senso che sia accompagnata dall'inizializzazione della stessa tra le {}. ERRORE SINTASSI = {'\0'} = più corretta per array.*\
+                              
+	menu ();               
+	
+        scanf ("%d", &scelta); //la funzione scanf serve per associare l'input (valore) immesso dall'utente tramite tastiera alla variabile scelta.
+                               // In pratica si dice al programma di aspettarsi un valore di tipo intero e assegnarlo alla variabile scelta.
+                               */ERRORE DI SINTASSI= il formato "%d" è utilizzato per il valore intero, ma la variabile scelta è un carattere.
+                                
+	switch (scelta)       
+	{
+		case 'A':      
+		moltiplica();
+		break;
+		case 'B':       
+                dividi();
+                break;
+		case 'C':       
+                ins_string();
+                break;          */ERRORE LOGICO=manca il default che permette di gestire il caso in cui l'utente non scelga 'A' 'B' 'C', cioè 
+                                  nel caso nessuna delle opzioni inserite dall'utente corrisponda a quelle previste per la variabile scelta.*\
+	}
+
+return 0;                       
+}
+
+
+void menu ()
+{                                               
+	
+        printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n"); 
+
+}
+
+
+void moltiplica () 
+{                                          
+	short int  a,b = 0;                                  //Inizializzazione delle variabili. ERRORE DI SINTASSI= manca l'inizializzazione di a.
+	printf ("Inserisci i due numeri da moltiplicare:");  //ERRORE DI SINTASSI: manca il new line '\n'
+	scanf ("%f", &a);                                    //ERRORE DI SINTASSI= l'identificatore % è seguito da "f" che sta per float e non per short int.
+	scanf ("%d", &b);                                    //ERRORE DI SINTASSI= l'identificatore %  è seguito da "d" che sta per intero e non per short int.
+
+	short int prodotto = a * b;                          //qui si dice al compilatore di calcolare il prodotto.
+
+	printf ("Il prodotto tra %d e %d e': %d", a,b,prodotto); //ERRORE DI SINTASSI= anche in questo caso % è seguito da "d" che sta per intero e non per short int.
+}                                                               
+
+
+void dividi ()            //il tipo delle variabili sarebbe più corretto in float, perchè in tal modo la divisione può restituire anche i numeri con la virgola.
+{
+        int  a,b = 0;                                       //Inizializzazione delle variabili. ERRORE DI SINTASSI= manca l'inizializzazione di a. 
+        printf ("Inserisci il numeratore:");                //ERRORE DI SINTASSI: manca il new line
+        scanf ("%d", &a);                                   //ERRORE DI SINTASSI= l'identificatore %  è seguito da "d" che sta per intero e non per float.
+
+	printf ("Inserisci il denumeratore:");              //ERRORE DI SINTASSI: manca il new line e in più non è denumeratore ma denominatore.
+        scanf ("%d", &b);                                   //ERRORE DI SINTASSI= l'identificatore %  è seguito da "d" che sta per intero e non per float.
+
+        int divisione = a % b;                              //ERRORE LOGICO: l'operatore % da il resto della divisione, non indica di effettuare la divisione.
+
+        printf ("La divisione tra %d e %d e': %d", a,b,divisione);  //ERRORE DI SINTASSI= l'identificatore %  è seguito da "d" che sta per intero e non per float.
+}
+
+
+
+
+
+void ins_string ()         //Manca la previsione di una risposta all'utente nel caso in cui inserisca una stringa superiore ai nove caratteri
+
+{
+	char stringa[10];                                
+        printf ("Inserisci la stringa:");
+        scanf ("%s", &stringa);                      //ERRORE DI SINTASSI: la variabile stringa è già un carattere, non c'è bisogno del puntatore '&'
+}                                                   //Manca la previsione di una risposta all'utente nel caso in cui inserisca una stringa superiore ai nove caratteri
+
